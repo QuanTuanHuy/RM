@@ -88,6 +88,19 @@ public enum ErrorCode {
     DELETE_SALARY_DETAIL_FAILED(100074, "Delete salary detail failed", HttpStatus.BAD_REQUEST),
     JSON_PARSE_FAILED(100075, "Json parse failed", HttpStatus.BAD_REQUEST),
     GET_CACHE_FAILED(100076, "Get cache failed", HttpStatus.BAD_REQUEST),
+
+    // Shipper module error codes
+    SHIPPER_NOT_FOUND(100077, "Shipper not found", HttpStatus.NOT_FOUND),
+    CREATE_SHIPPER_FAILED(100078, "Create shipper failed", HttpStatus.BAD_REQUEST),
+    UPDATE_SHIPPER_FAILED(100079, "Update shipper failed", HttpStatus.BAD_REQUEST),
+    DELETE_SHIPPER_FAILED(100080, "Delete shipper failed", HttpStatus.BAD_REQUEST),
+    SHIPPER_ASSIGNMENT_FAILED(100081, "Shipper assignment failed", HttpStatus.BAD_REQUEST),
+    NO_SHIPPERS_AVAILABLE(100082, "No shippers available", HttpStatus.BAD_REQUEST),
+    UPDATE_SHIPPER_STATUS_FAILED(100083, "Update shipper status failed", HttpStatus.BAD_REQUEST),
+    UPDATE_SHIPPER_LOCATION_FAILED(100084, "Update shipper location failed", HttpStatus.BAD_REQUEST),
+    SHIPPER_MAX_ORDERS_REACHED(100085, "Shipper reached maximum orders", HttpStatus.BAD_REQUEST),
+    UPDATE_DELIVERY_STATUS_FAILED(100086, "Update delivery status failed", HttpStatus.BAD_REQUEST),
+    SAVE_SHIPPER_FAILED(100087, "Save shipper failed", HttpStatus.BAD_REQUEST),
     ;
 
     ErrorCode(int code, String message, HttpStatusCode httpStatusCode) {
