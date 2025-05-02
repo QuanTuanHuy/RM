@@ -101,6 +101,8 @@ public enum ErrorCode {
     SHIPPER_MAX_ORDERS_REACHED(100085, "Shipper reached maximum orders", HttpStatus.BAD_REQUEST),
     UPDATE_DELIVERY_STATUS_FAILED(100086, "Update delivery status failed", HttpStatus.BAD_REQUEST),
     SAVE_SHIPPER_FAILED(100087, "Save shipper failed", HttpStatus.BAD_REQUEST),
+    GET_SHIPPER_FAILED(100088, "Get shipper failed", HttpStatus.BAD_REQUEST),
+    GET_ORDER_FAILED(100089, "Get order failed", HttpStatus.BAD_REQUEST),
     ;
 
     ErrorCode(int code, String message, HttpStatusCode httpStatusCode) {

@@ -58,10 +58,4 @@ public class ShipperModel {
 
     @Column(name = "completed_deliveries")
     private Integer completedDeliveries;
-
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
 }

@@ -1,5 +1,6 @@
 package hust.project.restaurant_management.port;
 
+import hust.project.restaurant_management.constants.DeliveryStatusEnum;
 import hust.project.restaurant_management.entity.OrderEntity;
 import hust.project.restaurant_management.entity.dto.request.GetOrderRequest;
 import hust.project.restaurant_management.entity.dto.response.PageInfo;
@@ -20,6 +21,12 @@ public interface IOrderPort {
     List<OrderEntity> getOrdersInTimeRangeAndStatus(LocalDateTime startTime, LocalDateTime endTime, String status);
 
     List<OrderEntity> getOrdersByStatus(String status);
+
+    List<OrderEntity> findByDeliveryStatus(DeliveryStatusEnum status);
+
+    List<OrderEntity> findDeliveryOrdersByShipperId(Long shipperId);
+
+    List<OrderEntity> findPendingDeliveryOrders();
 
     void deleteOrderById(Long id);
 }

@@ -21,8 +21,8 @@ public class UpdateShipperUseCase {
     @Transactional
     public ShipperEntity updateShipper(Long shipperId, UpdateShipperRequest request) {
         try {
-            // Get shipper
-            ShipperEntity shipper = shipperPort.findById(shipperId);
+            ShipperEntity shipper = shipperPort.findById(shipperId)
+                    .orElseThrow(() -> new AppException(ErrorCode.SHIPPER_NOT_FOUND));
             
             // Update shipper
             shipperMapper.updateEntityFromRequest(shipper, request);

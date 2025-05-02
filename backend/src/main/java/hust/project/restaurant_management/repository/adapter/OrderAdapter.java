@@ -1,5 +1,6 @@
 package hust.project.restaurant_management.repository.adapter;
 
+import hust.project.restaurant_management.constants.DeliveryStatusEnum;
 import hust.project.restaurant_management.constants.ErrorCode;
 import hust.project.restaurant_management.entity.OrderEntity;
 import hust.project.restaurant_management.entity.dto.request.GetOrderRequest;
@@ -61,6 +62,39 @@ public class OrderAdapter implements IOrderPort {
     @Override
     public List<OrderEntity> getOrdersByStatus(String status) {
         return orderMapper.toEntitiesFromModels(orderRepository.findByOrderStatus(status));
+    }
+    
+    @Override
+    public List<OrderEntity> findByDeliveryStatus(DeliveryStatusEnum status) {
+        try {
+            return orderMapper.toEntitiesFromModels(
+                    orderRepository.findByIsDeliveryOrderTrueAndDeliveryStatus(status));
+        } catch (Exception e) {
+            log.error("[OrderAdapter] findByDeliveryStatus: error: {}", e.getMessage());
+            throw new AppException(ErrorCode.GET_ORDER_FAILED);
+        }
+    }
+    
+    @Override
+    public List<OrderEntity> findDeliveryOrdersByShipperId(Long shipperId) {
+        try {
+            return orderMapper.toEntitiesFromModels(
+                    orderRepository.findByIsDeliveryOrderTrueAndShipperId(shipperId));
+        } catch (Exception e) {
+            log.error("[OrderAdapter] findDeliveryOrdersByShipperId: error: {}", e.getMessage());
+            throw new AppException(ErrorCode.GET_ORDER_FAILED);
+        }
+    }
+    
+    @Override
+    public List<OrderEntity> findPendingDeliveryOrders() {
+        try {
+            return orderMapper.toEntitiesFromModels(
+                    orderRepository.findByIsDeliveryOrderTrueAndDeliveryStatus(DeliveryStatusEnum.PENDING));
+        } catch (Exception e) {
+            log.error("[OrderAdapter] findPendingDeliveryOrders: error: {}", e.getMessage());
+            throw new AppException(ErrorCode.GET_ORDER_FAILED);
+        }
     }
 
     @Override

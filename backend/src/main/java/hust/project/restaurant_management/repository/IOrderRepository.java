@@ -1,5 +1,6 @@
 package hust.project.restaurant_management.repository;
 
+import hust.project.restaurant_management.constants.DeliveryStatusEnum;
 import hust.project.restaurant_management.model.OrderModel;
 import org.springframework.stereotype.Repository;
 
@@ -14,4 +15,10 @@ public interface IOrderRepository extends IBaseRepository<OrderModel>, CustomOrd
                                                               String status);
 
     List<OrderModel> findByOrderStatus(String status);
+
+    List<OrderModel> findByIsDeliveryOrderTrueAndDeliveryStatus(DeliveryStatusEnum status);
+
+    List<OrderModel> findByIsDeliveryOrderTrueAndShipperId(Long shipperId);
+
+    List<OrderModel> findByIsDeliveryOrderTrueAndShipperIdAndDeliveryStatus(Long shipperId, DeliveryStatusEnum status);
 }

@@ -29,8 +29,6 @@ public class ShipperMapper {
                 .currentOrderCount(0)
                 .rating(0.0)
                 .completedDeliveries(0)
-                .createdAt(LocalDateTime.now())
-                .updatedAt(LocalDateTime.now())
                 .build();
     }
 
@@ -71,8 +69,6 @@ public class ShipperMapper {
         if (request.getMaxConcurrentOrders() != null) {
             entity.setMaxConcurrentOrders(request.getMaxConcurrentOrders());
         }
-        
-        entity.setUpdatedAt(LocalDateTime.now());
     }
 
     public ShipperResponse toResponse(ShipperEntity entity) {
@@ -102,8 +98,6 @@ public class ShipperMapper {
                 .currentOrderCount(entity.getCurrentOrderCount())
                 .rating(entity.getRating())
                 .completedDeliveries(entity.getCompletedDeliveries())
-                .createdAt(entity.getCreatedAt())
-                .updatedAt(entity.getUpdatedAt())
                 .build();
     }
 
